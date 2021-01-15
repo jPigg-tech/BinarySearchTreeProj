@@ -9,5 +9,12 @@ namespace BinarySearchTree
     class Node
     {
         // represent the individual nodes that make up a binary search tree
+
+        // Member Variables (Has A)
+
+        // Constructor (Spawner)
+
+        // Member Methods (Can Do)
+
     }
 }
