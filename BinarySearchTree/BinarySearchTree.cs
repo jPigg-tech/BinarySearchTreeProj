@@ -28,13 +28,34 @@ namespace BinarySearchTree
                 rootNode = new Node(data);
                 return;
             }
-            // 2. Otherwise, recur down the tree 
-            
+            // Otherwise, search down the tree 
+            Search(rootNode, new Node(data));
         }
-        public void Search(Node rootNode, Node newNode)
+        public void Search(Node _rootNode, Node newNode)
         {
-            // search for a specific value within the binary search tree data structure
-
+            // search for a specific value within the binary search tree data structure           
+            if (newNode.data < _rootNode.data)
+            {
+                if (_rootNode.leftNode == null)
+                {
+                    _rootNode.leftNode = newNode;
+                }
+                else
+                {
+                    Search(_rootNode.leftNode, newNode);
+                }
+            }
+            else
+            {
+                if (_rootNode.rightNode == null)
+                {
+                    _rootNode.rightNode = newNode;
+                }
+                else
+                {
+                    Search(_rootNode.rightNode, newNode);                   
+                }
+            }
         }
     }
 }
