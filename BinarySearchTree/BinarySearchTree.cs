@@ -29,11 +29,10 @@ namespace BinarySearchTree
                 return;
             }
             // Otherwise, search down the tree 
-            Search(rootNode, new Node(data));
+            AddNew(rootNode, new Node(data));
         }
-        public void Search(Node _rootNode, Node newNode)
-        {
-            // search for a specific value within the binary search tree data structure           
+        public void AddNew(Node _rootNode, Node newNode)
+        {                      
             if (newNode.data < _rootNode.data)
             {
                 if (_rootNode.leftNode == null)
@@ -42,7 +41,7 @@ namespace BinarySearchTree
                 }
                 else
                 {
-                    Search(_rootNode.leftNode, newNode);
+                    AddNew(_rootNode.leftNode, newNode);
                 }
             }
             else
@@ -53,9 +52,52 @@ namespace BinarySearchTree
                 }
                 else
                 {
-                    Search(_rootNode.rightNode, newNode);                   
+                    AddNew(_rootNode.rightNode, newNode);                   
                 }
             }
+        }
+        public bool Search(int nodeData)
+        {
+            // search for a specific value within the binary search tree data structure 
+            Node currentNode = rootNode;
+            if (rootNode.data == nodeData)
+            {
+                return true;
+            }           
+            while (true)
+            {
+                if(nodeData < currentNode.data)
+                {
+                    if (currentNode.leftNode == null)
+                    {
+                        break;
+                    }
+                    else if (currentNode.leftNode.data == nodeData)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        currentNode = currentNode.leftNode;
+                    }
+                }
+                else if (nodeData > currentNode.data)
+                {
+                    if (currentNode.rightNode == null)
+                    {
+                        break;
+                    }
+                    else if (currentNode.rightNode.data == nodeData)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        currentNode = currentNode.rightNode;
+                    }
+                }             
+            }
+            return false;
         }
     }
 }
